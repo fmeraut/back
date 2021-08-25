@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.entities.Place;
@@ -46,12 +45,12 @@ public class PlaceController {
 	}
 
 	@RequestMapping(value = "/places/{country}", method = RequestMethod.GET)
-	public List<Place> findPlaceByCountry(@RequestParam(name = "country") String country) {
+	public List<Place> findPlaceByCountry(@PathVariable("country") String country) {
 		return placeService.findPlaceByCountry(country);
 	}
 	
 	@RequestMapping(value = "/places/{title}", method = RequestMethod.GET)
-	public List<Place> findPlaceByTitle(@RequestParam(name = "title") String title) {
+	public List<Place> findPlaceByTitle(@PathVariable("title") String title) {
 		return placeService.findPlaceByTitle(title);
 	}
 }

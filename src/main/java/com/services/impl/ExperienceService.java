@@ -37,5 +37,17 @@ public class ExperienceService implements IExperienceService{
 		experienceRepository.deleteById(id);
 	}
 
+	@Override
+	public List<Experience> findByCountry(String country) {
+		// TODO Auto-generated method stub
+		return experienceRepository.findByCountry(country);
+	}
+
+	@Override
+	public List<Experience> findByTitle(String title) {
+		// TODO Auto-generated method stub
+		return experienceRepository.findByTitle(title);
+	}
+
 }
 

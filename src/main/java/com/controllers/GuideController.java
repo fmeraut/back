@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.entities.Guide;
@@ -46,12 +45,12 @@ public class GuideController {
 	}
 	
 	@RequestMapping(value = "/guides/{country}", method = RequestMethod.GET)
-	public List<Guide> findGuideByCountry(@RequestParam(name = "country") String country){
+	public List<Guide> findGuideByCountry(@PathVariable("country") String country){
 		return guideService.findGuideByCountry(country);
 	}
 	
 	@RequestMapping(value = "/guides/{title}", method = RequestMethod.GET)
-	public List<Guide> findGuideByTitle(@RequestParam(name = "title") String title){
+	public List<Guide> findGuideByTitle(@PathVariable("title") String title){
 		return guideService.findGuideByTitle(title);
 	}
 }
