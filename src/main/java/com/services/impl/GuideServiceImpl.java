@@ -51,4 +51,15 @@ public class GuideServiceImpl implements IGuideService{
 		return guideRepository.findGuideByTitle(title);
 	}
 
+	@Override
+	public List<Guide> findUnvalidated() {
+		return guideRepository.findUnvalidated();
+	}
+
+	@Override
+	public void validate(Long id) {
+		guideRepository.validate(id);
+		
+	}
+
 }

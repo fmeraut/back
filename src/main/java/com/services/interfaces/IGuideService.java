@@ -17,4 +17,8 @@ public interface IGuideService {
 	
 	public List<Guide> findGuideByTitle(String title);
 	
+	public List<Guide> findUnvalidated();
+	
+	public void validate(Long id);
+	
 }

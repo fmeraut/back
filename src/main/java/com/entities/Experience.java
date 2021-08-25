@@ -38,6 +38,7 @@ public class Experience implements Serializable{
 	private byte[] photos;
 	private String[] videos;
 	private double rating;
+	private boolean validated;
 	
 	@OneToMany
 	@JoinColumn(name = "fk_id_experience",referencedColumnName = "id")

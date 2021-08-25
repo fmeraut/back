@@ -17,5 +17,9 @@ public interface IExperienceService {
 	public List<Experience> findByCountry(String country);
 	
 	public List<Experience> findByTitle(String title);
+	
+	public List<Experience> findUnvalidated();
+	
+	public void validate(Long id);
 
 }

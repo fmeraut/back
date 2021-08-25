@@ -49,5 +49,16 @@ public class ExperienceService implements IExperienceService{
 		return experienceRepository.findByTitle(title);
 	}
 
+	@Override
+	public List<Experience> findUnvalidated() {
+		return experienceRepository.findUnvalidated();
+	}
+
+	@Override
+	public void validate(Long id) {
+		experienceRepository.validate(id);
+		
+	}
+
 }
 

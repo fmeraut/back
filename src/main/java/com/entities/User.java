@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,12 +39,13 @@ public class User implements Serializable{
 	private String password;
 	private String mail;
 	private boolean aboNews;
+	private boolean enabled;
 	
 	@OneToMany
 	@JoinColumn(name = "fk_id_user",referencedColumnName = "id")
 	private List<Experience> experiences;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "assoc_role_user", joinColumns = @JoinColumn(name="id_user"), inverseJoinColumns = @JoinColumn(name="id_role"))
 	private Set<Role> roles;
 	

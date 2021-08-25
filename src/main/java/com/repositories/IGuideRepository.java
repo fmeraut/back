@@ -3,9 +3,11 @@ package com.repositories;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.entities.Guide;
 
@@ -26,4 +28,12 @@ public interface IGuideRepository extends JpaRepository<Guide, Long>{
 	 */
 	@Query("from Guide g where g.title like %:x%")
 	public List<Guide> findGuideByTitle(@Param("x") String title);
+	
+	@Query("select g from Guide g where g.validated=0")
+	public List<Guide> findUnvalidated();
+	
+	@Transactional
+	@Modifying
+	@Query("update Guide set validated=1 where id=:x")
+	public void validate(@Param("x") Long id);
 }

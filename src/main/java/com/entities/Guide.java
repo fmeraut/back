@@ -36,6 +36,7 @@ public class Guide implements Serializable {
 	private String country;
 	@Lob
 	private byte[] image;
+	private boolean validated;
 	
 	@ManyToMany
 	@JoinTable(name = "assoc_user_guide", joinColumns = @JoinColumn(name = "id_guide"), inverseJoinColumns = @JoinColumn(name = "id_user"))
