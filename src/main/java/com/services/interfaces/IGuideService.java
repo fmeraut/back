@@ -13,4 +13,8 @@ public interface IGuideService {
 	
 	public void deleteGuide(Long id);
 	
+	public List<Guide> findGuideByCountry(String country);
+	
+	public List<Guide> findGuideByTitle(String title);
+	
 }

@@ -39,4 +39,16 @@ public class GuideServiceImpl implements IGuideService{
 		guideRepository.deleteById(id);
 	}
 
+	@Override
+	public List<Guide> findGuideByCountry(String country) {
+		// TODO Auto-generated method stub
+		return guideRepository.findGuideByCountry(country);
+	}
+
+	@Override
+	public List<Guide> findGuideByTitle(String title) {
+		// TODO Auto-generated method stub
+		return guideRepository.findGuideByTitle(title);
+	}
+
 }

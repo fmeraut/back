@@ -12,4 +12,8 @@ public interface IPlaceService {
 	public Place findOne(Long id);
 	
 	public void deletePlace(Long id);
+	
+	public List<Place> findPlaceByCountry(String country);
+	
+	public List<Place> findPlaceByTitle(String title);
 }
