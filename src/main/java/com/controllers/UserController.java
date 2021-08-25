@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -81,6 +82,16 @@ public class UserController {
 	@GetMapping("/abos")
 	public List<User> findAbo() {
 		return userService.findAbo();
+	}
+	
+	@PutMapping("/users/{id}")
+	public User updateUser(@PathVariable("id")Long id, @RequestBody User user) {
+		User currentUser=userService.findOne(id);
+		currentUser.setNom(user.getNom());
+		currentUser.setPrenom(user.getPrenom());
+		currentUser.setUsername(user.getUsername());
+		currentUser.setMail(user.getMail());
+		return userService.saveUser(currentUser);
 	}
 
 }
