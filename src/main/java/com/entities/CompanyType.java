@@ -1,6 +1,6 @@
 package com.entities;
 
-import java.util.Date;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -22,8 +22,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @Table
 @Entity
-public class CompanyType {
+public class CompanyType implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

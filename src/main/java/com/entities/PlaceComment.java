@@ -1,6 +1,7 @@
 package com.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,6 +32,7 @@ public class PlaceComment implements Serializable{
 	private Long id;
 	private String text;
 	private double note;
+	private Date date;
 	
 	@ManyToOne
 	@JoinColumn(name = "fk_id_place",referencedColumnName = "id")
