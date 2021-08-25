@@ -29,14 +29,12 @@ public class UserController {
 		return userService.saveUser(user);
 	}
 
-	// @RequestMapping(value = "/users", method = RequestMethod.GET)
 	@GetMapping("/users")
 	public List<User> findAll() {
 		return userService.findAll();
 	}
 
 	@RequestMapping(value = "/users/{idUser}", method = RequestMethod.GET)
-	// @GetMapping("/users/{idUser}")
 	public User findOne(@PathVariable("idUser") Long id) {
 		return userService.findOne(id);
 	}
@@ -45,6 +43,31 @@ public class UserController {
 	@DeleteMapping("/users/{idUser}")
 	public void deleteUser(@PathVariable("idUser") Long id) {
 		userService.deleteUser(id);
+	}
+	
+	@GetMapping("/users/{nom}")
+	public User findNom(@PathVariable("nom") String nom) {
+		return userService.findByNom(nom);
+	}
+	
+	@GetMapping("/users/{prenom}")
+	public User findPrenom(@PathVariable("prenom") String prenom) {
+		return userService.findByPrenom(prenom);
+	}
+	
+	@GetMapping("/users/{username}")
+	public User findUsername(@PathVariable("username") String username) {
+		return userService.findByUsername(username);
+	}
+	
+	@GetMapping("/users/{mail}")
+	public User findMail(@PathVariable("mail") String mail) {
+		return userService.findByMail(mail);
+	}
+	
+	@GetMapping("/abos")
+	public List<User> findAbo() {
+		return userService.findAbo();
 	}
 
 }

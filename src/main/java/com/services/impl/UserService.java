@@ -37,4 +37,29 @@ public class UserService implements IUserService{
 		userRepository.deleteById(id);
 	}
 
+	@Override
+	public User findByUsername(String username) {
+		return userRepository.findByUsername(username);
+	}
+
+	@Override
+	public User findByNom(String nom) {
+		return userRepository.findByNom(nom);
+	}
+
+	@Override
+	public User findByPrenom(String prenom) {
+		return userRepository.findByPrenom(prenom);
+	}
+
+	@Override
+	public User findByMail(String mail) {
+		return userRepository.findByMail(mail);
+	}
+
+	@Override
+	public List<User> findAbo() {
+		return userRepository.findAbo();
+	}
+
 }
