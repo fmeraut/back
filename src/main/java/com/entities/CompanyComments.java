@@ -31,5 +31,9 @@ public class CompanyComments {
 	@JoinColumn(name = "FK_COMPANY",  referencedColumnName = "id")
 	private Company company;
 	
+	@ManyToOne
+	@JoinColumn(name = "fk_id_user",referencedColumnName = "id")
+	private User user;
+	
 
 }
