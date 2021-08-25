@@ -3,6 +3,7 @@ package com.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,10 +24,22 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
+	@Autowired
+	PasswordEncoder passwordEncoder;
 
 	@PostMapping("/users")
 	public User saveUser(@RequestBody User user) {
-		return userService.saveUser(user);
+		User cuser=new User();
+		cuser.setPassword(passwordEncoder.encode(user.getPassword()));
+		cuser.setUsername(user.getUsername());
+		cuser.setNom(user.getNom());
+		cuser.setPrenom(user.getPrenom());
+		cuser.setMail(user.getMail());
+		cuser.setRoles(user.getRoles());
+		cuser.setAboNews(user.isAboNews());
+		cuser.setCompcomments(user.getCompcomments());
+		cuser.setExperiences(user.getExperiences());		
+		return userService.saveUser(cuser);
 	}
 
 	@GetMapping("/users")

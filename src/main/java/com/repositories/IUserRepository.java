@@ -16,7 +16,7 @@ public interface IUserRepository extends JpaRepository<User, Long>{
 	public User findByPrenom(String username);
 	public User findByMail(String username);
 	
-	@Query("select u from User u where u.AboNews=1")
+	@Query("select u from User u where u.aboNews=1")
 	public List<User> findAbo();
 
 }

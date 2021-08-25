@@ -2,6 +2,7 @@ package com.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,10 +41,11 @@ public class User implements Serializable{
 	
 	@ManyToMany
 	@JoinTable(name = "assoc_role_user", joinColumns = @JoinColumn(name="id_user"), inverseJoinColumns = @JoinColumn(name="id_role"))
-	private List<Role> roles;
+	private Set<Role> roles;
 	
 	@OneToMany
 	@JoinColumn(name = "fk_id_user",referencedColumnName = "id")
 	private List<CompanyComments> compcomments;
+	
 
 }
