@@ -35,7 +35,7 @@ public class PlaceType implements Serializable{
 	private Long id;
 	private String type;
 	
-	@JsonBackReference
+	
 	@OneToMany
 	@JoinColumn(name = "fk_id_placeType",referencedColumnName = "id")
 	private List<Place> places;

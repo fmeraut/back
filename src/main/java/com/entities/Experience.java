@@ -4,6 +4,7 @@ package com.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -44,13 +45,13 @@ public class Experience implements Serializable{
 	private double rating;
 	private boolean validated;
 	
-	@JsonBackReference
-	@OneToMany
-	@JoinColumn(name = "fk_id_experience",referencedColumnName = "id")
+	
+	@OneToMany(mappedBy = "experience",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<ExpComment> comments;
 	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "user",  referencedColumnName = "id")
 	private User user;
 
 }

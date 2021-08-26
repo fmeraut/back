@@ -3,7 +3,9 @@ package com.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,9 +37,8 @@ public class CompanyType implements Serializable{
 	private Long id;
 	private String companyType;
 	
-	@JsonBackReference
-	@OneToMany
-	@JoinColumn(name = "FK_COMPANY", referencedColumnName = "id") 
+	
+	@OneToMany(mappedBy = "companyType",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Company> company;
 
 }
