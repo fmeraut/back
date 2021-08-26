@@ -44,12 +44,12 @@ public class PlaceController {
 		placeService.deletePlace(id);
 	}
 
-	@RequestMapping(value = "/places/{country}", method = RequestMethod.GET)
+	@RequestMapping(value = "/places/country/{country}", method = RequestMethod.GET)
 	public List<Place> findPlaceByCountry(@PathVariable("country") String country) {
 		return placeService.findPlaceByCountry(country);
 	}
 	
-	@RequestMapping(value = "/places/{title}", method = RequestMethod.GET)
+	@RequestMapping(value = "/places/title/{title}", method = RequestMethod.GET)
 	public List<Place> findPlaceByTitle(@PathVariable("title") String title) {
 		return placeService.findPlaceByTitle(title);
 	}

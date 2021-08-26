@@ -46,12 +46,12 @@ public class GuideController {
 		guideService.deleteGuide(id);
 	}
 	
-	@RequestMapping(value = "/guides/{country}", method = RequestMethod.GET)
+	@RequestMapping(value = "/guides/country/{country}", method = RequestMethod.GET)
 	public List<Guide> findGuideByCountry(@PathVariable("country") String country){
 		return guideService.findGuideByCountry(country);
 	}
 	
-	@RequestMapping(value = "/guides/{title}", method = RequestMethod.GET)
+	@RequestMapping(value = "/guides/title/{title}", method = RequestMethod.GET)
 	public List<Guide> findGuideByTitle(@PathVariable("title") String title){
 		return guideService.findGuideByTitle(title);
 	}

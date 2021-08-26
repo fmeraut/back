@@ -48,12 +48,12 @@ public class ExperienceController {
 		experienceService.deleteExperience(id);
 	}
 	
-	@GetMapping("/experiences/{country}")
+	@GetMapping("/experiences/country/{country}")
 	public List<Experience> findByCountry(@PathVariable("country") String country){
 		return experienceService.findByCountry(country);
 	}
 	
-	@GetMapping("/experiences/{title}")
+	@GetMapping("/experiences/title/{title}")
 	public List<Experience> findByTitle(@PathVariable("title") String title){
 		return experienceService.findByTitle(title);
 	}
