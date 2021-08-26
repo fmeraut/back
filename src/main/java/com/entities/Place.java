@@ -43,6 +43,7 @@ public class Place implements Serializable {
 	private String cost;
 	private int interet;
 	private byte[] image;
+	private double rating;
 	
 	@ManyToOne
 	@JoinColumn(name = "fk_id_placeType",referencedColumnName = "id")
