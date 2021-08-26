@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -48,9 +49,8 @@ public class Experience implements Serializable{
 	@JoinColumn(name = "fk_id_experience",referencedColumnName = "id")
 	private List<ExpComment> comments;
 	
-	@JsonBackReference
-	@ManyToOne
-	@JoinColumn(name = "fk_id_user",referencedColumnName = "id")
+	
+	@ManyToOne(fetch = FetchType.EAGER)
 	private User user;
 
 }

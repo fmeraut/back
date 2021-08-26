@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -42,9 +43,8 @@ public class CompanyComments implements Serializable{
 	@JoinColumn(name = "FK_COMPANY",  referencedColumnName = "id")
 	private Company company;
 	
-	@JsonBackReference
-	@ManyToOne
-	@JoinColumn(name = "fk_id_user",referencedColumnName = "id")
+
+	@ManyToOne(fetch = FetchType.EAGER)
 	private User user;
 	
 

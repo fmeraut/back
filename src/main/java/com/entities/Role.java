@@ -29,8 +29,5 @@ public class Role implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String libelle;
-	
-	@ManyToMany(mappedBy = "roles")
-	private List<User> users;
 
 }

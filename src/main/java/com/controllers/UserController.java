@@ -29,7 +29,7 @@ public class UserController {
 //	PasswordEncoder passwordEncoder;
 
 	@PostMapping("/users")
-	public User saveUser(@RequestBody User user) {
+	public User saveUser(@RequestBody(required = false) User user) {
 //		User cuser=new User();
 //		cuser.setPassword(passwordEncoder.encode(user.getPassword()));
 //		cuser.setUsername(user.getUsername());

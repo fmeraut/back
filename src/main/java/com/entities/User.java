@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -41,21 +42,19 @@ public class User implements Serializable{
 	private String password;
 	private String mail;
 	private boolean aboNews;
-	private boolean enabled;
+	private boolean enabled=true;
 	
-	@JsonBackReference
-	@OneToMany
-	@JoinColumn(name = "fk_id_user",referencedColumnName = "id")
+	
+	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
 	private List<Experience> experiences;
 	
-	@JsonBackReference
+
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "assoc_role_user", joinColumns = @JoinColumn(name="id_user"), inverseJoinColumns = @JoinColumn(name="id_role"))
 	private Set<Role> roles;
 	
-	@JsonBackReference
-	@OneToMany
-	@JoinColumn(name = "fk_id_user",referencedColumnName = "id")
+	
+	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
 	private List<CompanyComments> compcomments;
 	
 
