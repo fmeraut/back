@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,6 +35,7 @@ public class CompanyType implements Serializable{
 	private Long id;
 	private String companyType;
 	
+	@JsonBackReference
 	@OneToMany
 	@JoinColumn(name = "FK_COMPANY", referencedColumnName = "id") 
 	private List<Company> company;

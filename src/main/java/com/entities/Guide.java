@@ -12,6 +12,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -39,10 +41,12 @@ public class Guide implements Serializable {
 	private boolean validated;
 	private double rating;
 	
+	@JsonBackReference
 	@ManyToMany
 	@JoinTable(name = "assoc_user_guide", joinColumns = @JoinColumn(name = "id_guide"), inverseJoinColumns = @JoinColumn(name = "id_user"))
 	private List<User> users;
 	
+	@JsonBackReference
 	@ManyToMany(mappedBy = "guides")
 	private List<Place> places;
 

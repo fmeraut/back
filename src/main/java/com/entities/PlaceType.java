@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,6 +35,7 @@ public class PlaceType implements Serializable{
 	private Long id;
 	private String type;
 	
+	@JsonBackReference
 	@OneToMany
 	@JoinColumn(name = "fk_id_placeType",referencedColumnName = "id")
 	private List<Place> places;

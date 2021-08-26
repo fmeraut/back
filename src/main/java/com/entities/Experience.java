@@ -13,6 +13,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -41,10 +43,12 @@ public class Experience implements Serializable{
 	private double rating;
 	private boolean validated;
 	
+	@JsonBackReference
 	@OneToMany
 	@JoinColumn(name = "fk_id_experience",referencedColumnName = "id")
 	private List<ExpComment> comments;
 	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "fk_id_user",referencedColumnName = "id")
 	private User user;

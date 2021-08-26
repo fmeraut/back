@@ -13,6 +13,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -45,14 +47,17 @@ public class Place implements Serializable {
 	private byte[] image;
 	private double rating;
 	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "fk_id_placeType",referencedColumnName = "id")
 	private PlaceType placeType;
 	
+	@JsonBackReference
 	@OneToMany
 	@JoinColumn(name = "fk_id_place",referencedColumnName = "id")
 	private List<PlaceComment> comments;
 	
+	@JsonBackReference
 	@ManyToMany
 	@JoinTable(name = "assoc_guide_place", joinColumns = @JoinColumn(name = "id_place"), inverseJoinColumns = @JoinColumn(name = "id_guide"))
 	private List<Guide> guides;

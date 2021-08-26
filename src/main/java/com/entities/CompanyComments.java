@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -35,10 +37,12 @@ public class CompanyComments implements Serializable{
 	private double note;
 	private Date date;
 	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "FK_COMPANY",  referencedColumnName = "id")
 	private Company company;
 	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "fk_id_user",referencedColumnName = "id")
 	private User user;

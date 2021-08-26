@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,6 +35,7 @@ public class ExpComment implements Serializable{
 	private double rating;
 	private Date date;
 	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "fk_id_experience",referencedColumnName = "id")
 	private Experience experience;

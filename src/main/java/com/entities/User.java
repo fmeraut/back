@@ -14,6 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -41,14 +43,17 @@ public class User implements Serializable{
 	private boolean aboNews;
 	private boolean enabled;
 	
+	@JsonBackReference
 	@OneToMany
 	@JoinColumn(name = "fk_id_user",referencedColumnName = "id")
 	private List<Experience> experiences;
 	
+	@JsonBackReference
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "assoc_role_user", joinColumns = @JoinColumn(name="id_user"), inverseJoinColumns = @JoinColumn(name="id_role"))
 	private Set<Role> roles;
 	
+	@JsonBackReference
 	@OneToMany
 	@JoinColumn(name = "fk_id_user",referencedColumnName = "id")
 	private List<CompanyComments> compcomments;
