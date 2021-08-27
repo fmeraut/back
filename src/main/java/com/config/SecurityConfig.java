@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception{
 		http
 			.authorizeRequests()
-				.anyRequest().authenticated() // toutes les requêtes doivent passées par la procédure de connexion
+				.anyRequest().permitAll() // toutes les requêtes doivent passées par la procédure de connexion
 			.and()
 			.formLogin()
 				.permitAll() // il faut faire la connexion avant d'ouvrir la ressource
