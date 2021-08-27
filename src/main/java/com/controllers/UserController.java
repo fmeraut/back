@@ -50,7 +50,7 @@ public class UserController {
 		return userService.findAll();
 	}
 
-	@RequestMapping(value = "/users/{idUser}", method = RequestMethod.GET)
+	@RequestMapping(value = "/users/findOne/{idUser}", method = RequestMethod.GET)
 	public User findOne(@PathVariable("idUser") Long id) {
 		return userService.findOne(id);
 	}
@@ -86,7 +86,7 @@ public class UserController {
 		return userService.findAbo();
 	}
 	
-	@PutMapping("/users/{id}")
+	@PutMapping("/users/update/{id}")
 	public User updateUser(@PathVariable("id")Long id, @RequestBody User user) {
 		User currentUser=userService.findOne(id);
 		currentUser.setNom(user.getNom());
