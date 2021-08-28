@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.entities.Company;
 import com.entities.CompanyComments;
 import com.services.impl.CompanyCommentsService;
+import com.services.interfaces.ICompanyService;
 
 @CrossOrigin
 @RestController
@@ -23,9 +25,13 @@ public class CompanyCommentsController {
 	
 	@Autowired
 	CompanyCommentsService companyCommentsService;
+	@Autowired
+	ICompanyService companyService;
 
 	@PostMapping("/companyComments")
 	public CompanyComments saveCompanyComments(@RequestBody CompanyComments companyComments) {
+		Company companyAdd = companyService.findOne(companyComments.getCompany().getId());
+		companyComments.setCompany(companyAdd);
 		return companyCommentsService.saveCompanyComment(companyComments);
 	}
 

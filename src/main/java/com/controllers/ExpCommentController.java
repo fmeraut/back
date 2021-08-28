@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.entities.ExpComment;
+import com.entities.Experience;
 import com.services.impl.ExpCommentService;
+import com.services.impl.ExperienceService;
 
 @CrossOrigin
 @RestController
@@ -23,9 +25,13 @@ public class ExpCommentController {
 
 	@Autowired
 	ExpCommentService expCommentService;
+	@Autowired
+	ExperienceService experienceService;
 
 	@PostMapping("/expComments")
 	public ExpComment saveExpComment(@RequestBody ExpComment expComment) {
+		Experience exp = experienceService.findOne(expComment.getExperience().getId());
+		expComment.setExperience(exp);
 		return expCommentService.saveExpComment(expComment);
 	}
 

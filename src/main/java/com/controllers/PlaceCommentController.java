@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.entities.Place;
 import com.entities.PlaceComment;
 import com.services.interfaces.IPlaceCommentService;
+import com.services.interfaces.IPlaceService;
 
 @CrossOrigin
 @RestController
@@ -23,9 +25,13 @@ public class PlaceCommentController {
 
 	@Autowired
 	IPlaceCommentService placeCommentService;
+	@Autowired
+	IPlaceService placeService;
 
 	@PostMapping("/placeComments")
 	public PlaceComment savePlaceComment(@RequestBody PlaceComment placeComment) {
+		Place place = placeService.findOne(placeComment.getPlace().getId());
+		placeComment.setPlace(place);
 		return placeCommentService.savePlaceComment(placeComment);
 	}
 
