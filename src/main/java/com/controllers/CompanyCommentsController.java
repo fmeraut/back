@@ -41,10 +41,14 @@ public class CompanyCommentsController {
 		return companyCommentsService.findOne(id);
 	}
 
-
 	@DeleteMapping("/companyComments/{idCompanyComments}")
 	public void deleteCompanyComments(@PathVariable("idCompanyComments") Long id) {
 		companyCommentsService.deleteCompanyComment(id);
+	}
+	
+	@GetMapping("/companyComments/company/{idCompany}")
+	public List<CompanyComments> findByCompany(@PathVariable("idCompany") Long id){
+		return companyCommentsService.findByCompany(id);
 	}
 
 }

@@ -37,4 +37,10 @@ public class ExpCommentService implements IExpCommentService{
 		expCommentRepository.deleteById(id);
 	}
 
+	@Override
+	public List<ExpComment> findByExperience(Long id) {
+		// TODO Auto-generated method stub
+		return expCommentRepository.findByExperience(id);
+	}
+
 }

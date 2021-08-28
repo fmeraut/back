@@ -38,7 +38,7 @@ public class CompanyType implements Serializable{
 	private String companyType;
 	
 	
-	@OneToMany(mappedBy = "companyType",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "companyType",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Company> company;
 
 }

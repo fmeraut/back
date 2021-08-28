@@ -43,10 +43,11 @@ public class Company implements Serializable{
 	private double rating;
 	private Date date;
 	
-	@OneToMany(mappedBy = "company",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "company",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<CompanyComments> companyComments;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonBackReference
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "companyType",  referencedColumnName = "id")
 	private CompanyType companyType;
 	

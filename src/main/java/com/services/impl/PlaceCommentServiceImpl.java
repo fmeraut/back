@@ -39,4 +39,10 @@ public class PlaceCommentServiceImpl implements IPlaceCommentService {
 		placeCommentRepository.deleteById(id);
 	}
 
+	@Override
+	public List<PlaceComment> findByPlace(Long id) {
+		// TODO Auto-generated method stub
+		return placeCommentRepository.findByPlace(id);
+	}
+
 }

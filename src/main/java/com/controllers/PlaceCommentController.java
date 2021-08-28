@@ -43,4 +43,9 @@ public class PlaceCommentController {
 	public void deletePlaceComment(@PathVariable("idPlaceComment") Long id) {
 		placeCommentService.deletePlaceComment(id);
 	}
+	
+	@GetMapping("/placeComments/place/{idPlace}")
+	public List<PlaceComment> findByPlace(@PathVariable("idPlace") Long id){
+		return placeCommentService.findByPlace(id);
+	}
 }

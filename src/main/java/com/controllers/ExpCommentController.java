@@ -46,5 +46,10 @@ public class ExpCommentController {
 	public void deleteExpComment(@PathVariable("idExpComment") Long id) {
 		expCommentService.deleteExpComment(id);
 	}
+	
+	@GetMapping("/expComments/experience/{idExperience}")
+	public List<ExpComment> findByExperience(@PathVariable("idExperience") Long id){
+		return expCommentService.findByExperience(id);
+	}
 
 }

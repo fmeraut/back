@@ -39,4 +39,10 @@ public class CompanyCommentsService implements ICompanyCommentsService {
 		
 	}
 
+	@Override
+	public List<CompanyComments> findByCompany(Long id) {
+		// TODO Auto-generated method stub
+		return companyCommentsRepository.findByCompany(id);
+	}
+
 }

@@ -12,5 +12,7 @@ public interface IExpCommentService {
 	public ExpComment findOne(Long id);
 
 	public void deleteExpComment(Long id);
+	
+	public List<ExpComment> findByExperience(Long id);
 
 }

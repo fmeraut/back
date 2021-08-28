@@ -12,4 +12,6 @@ public interface IPlaceCommentService {
 	public PlaceComment findOne(Long id);
 	
 	public void deletePlaceComment(Long id);
+	
+	public List<PlaceComment> findByPlace(Long id);
 }

@@ -14,5 +14,7 @@ public interface ICompanyCommentsService {
 	public CompanyComments findOne(Long id);
 
 	public void deleteCompanyComment(Long id);
+	
+	public List<CompanyComments> findByCompany(Long id);
 
 }
