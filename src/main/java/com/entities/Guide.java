@@ -37,8 +37,9 @@ public class Guide implements Serializable {
 	private Long id;
 	private String title;
 	private String country;
+	private String text;
 	@Lob
-	private byte[] image;
+	private byte[] images;
 	private boolean validated;
 	private double rating;
 	

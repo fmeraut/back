@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.entities.Experience;
+import com.entities.Guide;
 import com.entities.Guide;
 import com.services.interfaces.IGuideService;
 
@@ -26,9 +28,28 @@ public class GuideController {
 	@Autowired
 	IGuideService guideService;
 
-	@PostMapping("/guides")
-	public Guide saveGuide(@RequestBody Guide guide) {
-		return guideService.saveGuide(guide);
+//	@PostMapping("/guides")
+//	public Guide saveGuide(@RequestBody Guide guide) {
+//		return guideService.saveGuide(guide);
+//	}
+	
+	@PostMapping(value="/guides")
+	public String saveGuide(@RequestParam String title, @RequestParam String country, 
+			@RequestParam String text, @RequestParam MultipartFile photos, 
+			@RequestParam String rating){ 
+		try {
+			Guide guide=new Guide();
+			guide.setTitle(title);
+			guide.setCountry(country);
+			guide.setText(text);
+			guide.setImages(photos.getBytes());
+			guide.setRating(Double.parseDouble(rating));
+			guideService.saveGuide(guide);
+			return "File uploaded successfully!";
+		} catch (Exception ex){
+			ex.printStackTrace();
+			return "Fail!";
+		}
 	}
 
 	@GetMapping("/guides")
