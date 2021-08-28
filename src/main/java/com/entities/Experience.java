@@ -46,11 +46,11 @@ public class Experience implements Serializable{
 	private boolean validated;
 	
 	
-	@OneToMany(mappedBy = "experience",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "experience",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<ExpComment> comments;
 	
-	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonBackReference
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user",  referencedColumnName = "id")
 	private User user;
 

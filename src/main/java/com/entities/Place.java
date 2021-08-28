@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -48,11 +49,10 @@ public class Place implements Serializable {
 	private double rating;
 	
 	@JsonBackReference
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_id_placeType",referencedColumnName = "id")
 	private PlaceType placeType;
 	
-	@JsonBackReference
 	@OneToMany
 	@JoinColumn(name = "fk_id_place",referencedColumnName = "id")
 	private List<PlaceComment> comments;

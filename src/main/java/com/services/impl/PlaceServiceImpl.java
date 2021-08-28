@@ -2,6 +2,7 @@ package com.services.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.entities.Place;
@@ -11,6 +12,7 @@ import com.services.interfaces.IPlaceService;
 @Service
 public class PlaceServiceImpl implements IPlaceService {
 
+	@Autowired
 	private IPlaceRepository placeRepository;
 
 	@Override

@@ -45,17 +45,14 @@ public class User implements Serializable{
 	private boolean aboNews;
 	private boolean enabled=true;
 	
-	
-	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Experience> experiences;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "assoc_role_user", joinColumns = @JoinColumn(name="id_user"), inverseJoinColumns = @JoinColumn(name="id_role"))
 	private Set<Role> roles;
 	
-	
 	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private List<CompanyComments> compcomments;
-	
 
 }
