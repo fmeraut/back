@@ -1,5 +1,6 @@
 package com.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,22 @@ public class ExperienceService implements IExperienceService{
 		experienceRepository.validate(id);
 		
 	}
+
+	@Override
+	public List<Experience> findTop() {
+		return experienceRepository.findTop();
+	}
+	
+	@Override
+	public List<Experience> findTop4() {
+		List<Experience> list=experienceRepository.findTop();
+		List<Experience> top=new ArrayList<Experience>();
+		for(int i=0;i<=3 && list.get(i)!=null;i++) {
+			top.add(list.get(i));
+		}
+		return top;
+	}
+
 
 }
 

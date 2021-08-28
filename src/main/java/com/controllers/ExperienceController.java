@@ -38,7 +38,7 @@ public class ExperienceController {
 	
 	@PostMapping(value="/experiences")
 	public String saveExperience(@RequestParam String title, @RequestParam String country, 
-			@RequestParam String text, @RequestParam MultipartFile photos, @RequestParam String[] videos , 
+			@RequestParam String text, @RequestParam MultipartFile photos, @RequestParam String videos , 
 			@RequestParam String rating){ 
 		try {
 			Experience experience=new Experience();
@@ -95,6 +95,15 @@ public class ExperienceController {
 		experienceService.validate(id);
 	}
 	
+	@GetMapping("/experiences/top")
+	public List<Experience> findTop() {
+		return experienceService.findTop();
+	}
+	
+	@GetMapping("/experiences/top4")
+	public List<Experience> findTop4() {
+		return experienceService.findTop4();
+	}
 	
 
 }

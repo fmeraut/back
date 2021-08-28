@@ -38,5 +38,8 @@ public interface IExperienceRepository extends JpaRepository<Experience, Long>{
 	@Modifying
 	@Query("update Experience set validated=1 where id=:x")
 	public void validate(@Param("x") Long id);
+	
+	@Query("from Experience e order by e.rating desc")
+	public List<Experience> findTop();
 
 }

@@ -41,7 +41,7 @@ public class Experience implements Serializable{
 	private String text;
 	@Lob
 	private byte[] photos;
-	private String[] videos;
+	private String videos;
 	private double rating;
 	private boolean validated;
 	

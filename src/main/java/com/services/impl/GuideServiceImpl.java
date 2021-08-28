@@ -1,5 +1,6 @@
 package com.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,21 @@ public class GuideServiceImpl implements IGuideService{
 	public void validate(Long id) {
 		guideRepository.validate(id);
 		
+	}
+	
+	@Override
+	public List<Guide> findTop() {
+		return guideRepository.findTop();
+	}
+	
+	@Override
+	public List<Guide> findTop4() {
+		List<Guide> list=guideRepository.findTop();
+		List<Guide> top=new ArrayList<Guide>();
+		for(int i=0;i<=3 && list.get(i)!=null;i++) {
+			top.add(list.get(i));
+		}
+		return top;
 	}
 
 }

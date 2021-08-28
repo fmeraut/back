@@ -65,4 +65,14 @@ public class GuideController {
 	public void validate(@PathVariable("idGuide") Long id) {
 		guideService.validate(id);
 	}
+	
+	@GetMapping("/guides/top")
+	public List<Guide> findTop() {
+		return guideService.findTop();
+	}
+	
+	@GetMapping("/guides/top4")
+	public List<Guide> findTop4() {
+		return guideService.findTop4();
+	}
 }
