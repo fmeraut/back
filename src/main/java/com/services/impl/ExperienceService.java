@@ -70,10 +70,23 @@ public class ExperienceService implements IExperienceService{
 	public List<Experience> findTop4() {
 		List<Experience> list=experienceRepository.findTop();
 		List<Experience> top=new ArrayList<Experience>();
-		for(int i=0;i<=3 && list.get(i)!=null;i++) {
+		for(int i=0;i<=3 && i<list.size();i++) {
 			top.add(list.get(i));
 		}
 		return top;
+	}
+
+	@Override
+	public List<Experience> findCountryList() {
+		List<Experience> list=experienceRepository.findCountryList();
+		for(int i=0;i<list.size();i++) {
+			for(int j=i+1;j<list.size();j++) {
+				if(list.get(i).getCountry().equals(list.get(j).getCountry())) {
+					list.remove(j);
+				}
+			}
+		}
+		return list;
 	}
 
 

@@ -9,7 +9,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.entities.Experience;
 import com.entities.Guide;
 
 @Repository
@@ -40,4 +39,7 @@ public interface IGuideRepository extends JpaRepository<Guide, Long>{
 	
 	@Query("from Guide g order by g.rating desc")
 	public List<Guide> findTop();
+	
+	@Query("from Guide g order by g.country asc")
+	public List<Guide> findCountryList();
 }

@@ -25,5 +25,7 @@ public interface IExperienceService {
 	public List<Experience> findTop();
 	
 	public List<Experience> findTop4();
+	
+	public List<Experience> findCountryList();
 
 }

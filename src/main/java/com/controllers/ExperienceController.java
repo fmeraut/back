@@ -105,5 +105,9 @@ public class ExperienceController {
 		return experienceService.findTop4();
 	}
 	
+	@GetMapping("/experiences/countryList")
+	public List<Experience> findCountryList(){
+		return experienceService.findCountryList();
+	}
 
 }

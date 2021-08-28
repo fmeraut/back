@@ -2,7 +2,6 @@ package com.services.interfaces;
 
 import java.util.List;
 
-import com.entities.Experience;
 import com.entities.Guide;
 
 public interface IGuideService {
@@ -25,5 +24,7 @@ public interface IGuideService {
 	public List<Guide> findTop();
 	
 	public List<Guide> findTop4();
+	
+	public List<Guide> findCountryList();
 	
 }

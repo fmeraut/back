@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.entities.Experience;
 import com.entities.Guide;
 import com.entities.Guide;
 import com.services.interfaces.IGuideService;
@@ -95,5 +96,10 @@ public class GuideController {
 	@GetMapping("/guides/top4")
 	public List<Guide> findTop4() {
 		return guideService.findTop4();
+	}
+	
+	@GetMapping("/guides/countryList")
+	public List<Guide> findCountryList(){
+		return guideService.findCountryList();
 	}
 }

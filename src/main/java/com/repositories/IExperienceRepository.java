@@ -41,5 +41,8 @@ public interface IExperienceRepository extends JpaRepository<Experience, Long>{
 	
 	@Query("from Experience e order by e.rating desc")
 	public List<Experience> findTop();
+	
+	@Query("from Experience e order by e.country asc")
+	public List<Experience> findCountryList();
 
 }

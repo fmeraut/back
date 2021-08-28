@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.entities.Experience;
 import com.entities.Guide;
 import com.repositories.IGuideRepository;
 import com.services.interfaces.IGuideService;
@@ -72,10 +73,23 @@ public class GuideServiceImpl implements IGuideService{
 	public List<Guide> findTop4() {
 		List<Guide> list=guideRepository.findTop();
 		List<Guide> top=new ArrayList<Guide>();
-		for(int i=0;i<=3 && list.get(i)!=null;i++) {
+		for(int i=0;i<=3 && i<list.size();i++) {
 			top.add(list.get(i));
 		}
 		return top;
+	}
+	
+	@Override
+	public List<Guide> findCountryList() {
+		List<Guide> list=guideRepository.findCountryList();
+		for(int i=0;i<list.size();i++) {
+			for(int j=i+1;j<list.size();j++) {
+				if(list.get(i).getCountry().equals(list.get(j).getCountry())) {
+					list.remove(j);
+				}
+			}
+		}
+		return list;
 	}
 
 }
