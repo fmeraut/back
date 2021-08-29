@@ -51,4 +51,10 @@ public class PlaceServiceImpl implements IPlaceService {
 		return placeRepository.findPlaceByTitle(title);
 	}
 
+	@Override
+	public List<Place> findByGuide(Long id) {
+		// TODO Auto-generated method stub
+		return placeRepository.findByGuide(id);
+	}
+
 }

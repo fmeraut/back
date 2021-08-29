@@ -26,5 +26,13 @@ public interface IPlaceRepository extends JpaRepository<Place, Long>{
 	 */
 	@Query("from Place p where p.title like %:x%")
 	public List<Place> findPlaceByTitle(@Param("x") String title);
+	
+	/**
+	 * trouver les lieux par guide
+	 * @param id
+	 * @return
+	 */
+	@Query("from Place p inner join p.guides g where g.id= :x")
+	public List<Place> findByGuide(@Param("x") Long id);
 
 }

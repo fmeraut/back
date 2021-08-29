@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.entities.Place;
+import com.services.interfaces.IGuideService;
 import com.services.interfaces.IPlaceService;
 
 @CrossOrigin
@@ -23,6 +24,8 @@ public class PlaceController {
 
 	@Autowired
 	IPlaceService placeService;
+	@Autowired
+	IGuideService guideService;
 
 	@PostMapping("/places")
 	public Place savePlace(@RequestBody Place place) {
@@ -52,5 +55,10 @@ public class PlaceController {
 	@RequestMapping(value = "/places/title/{title}", method = RequestMethod.GET)
 	public List<Place> findPlaceByTitle(@PathVariable("title") String title) {
 		return placeService.findPlaceByTitle(title);
+	}
+	
+	@GetMapping("/places/guide/{idGuide}")
+	public List<Place> findByGuide(@PathVariable("idGuide") Long id){
+		return placeService.findByGuide(id);
 	}
 }

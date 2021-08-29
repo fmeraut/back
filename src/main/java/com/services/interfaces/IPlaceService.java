@@ -16,4 +16,6 @@ public interface IPlaceService {
 	public List<Place> findPlaceByCountry(String country);
 	
 	public List<Place> findPlaceByTitle(String title);
+	
+	public List<Place> findByGuide(Long id);
 }
