@@ -2,6 +2,8 @@ package com.services.interfaces;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.PathVariable;
+
 import com.entities.Guide;
 
 public interface IGuideService {
@@ -29,4 +31,4 @@ public interface IGuideService {
 	
 	public List<Guide> findCountryList();
 	
-}
+	public Guide savePlace(Long gid,Long pid);}

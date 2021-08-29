@@ -119,4 +119,11 @@ public class GuideController {
 		places.add(assoPlace);
 		currentGuide.setPlaces(places);
 	}
+	
+	@GetMapping(value="/guides/guide/{gid}/place/{pid}")
+	public void savePlace(@PathVariable("gid") Long gid, @PathVariable("pid") Long pid){ 
+		
+		guideService.savePlace(gid,pid);
+			
+	}
 }

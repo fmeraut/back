@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.entities.Experience;
 import com.entities.Guide;
+import com.entities.Place;
 import com.repositories.IGuideRepository;
+import com.repositories.IPlaceRepository;
 import com.services.interfaces.IGuideService;
 
 @Service
@@ -16,6 +18,9 @@ public class GuideServiceImpl implements IGuideService{
 
 	@Autowired
 	private IGuideRepository guideRepository;
+	
+	@Autowired
+	private IPlaceRepository placeRepository;
 	
 	@Override
 	public Guide saveGuide(Guide guide) {
@@ -95,6 +100,21 @@ public class GuideServiceImpl implements IGuideService{
 			}
 		}
 		return list;
+	}
+
+	@Override
+	public Guide savePlace(Long gid, Long pid) {
+		Guide guide=guideRepository.findById(gid).get();
+		List<Place> places = guide.getPlaces();
+		Place place=placeRepository.findById(pid).get();
+		List<Guide> guides=place.getGuides();
+		guides.add(guide);
+		places.add(place);
+		guide.setPlaces(places);
+		place.setGuides(guides);
+		placeRepository.save(place);
+		return guideRepository.save(guide);
+		
 	}
 
 }
