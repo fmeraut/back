@@ -19,6 +19,8 @@ public interface IGuideService {
 	
 	public List<Guide> findUnvalidated();
 	
+	public List<Guide> findvalidated();
+	
 	public void validate(Long id);
 	
 	public List<Guide> findTop();

@@ -32,6 +32,9 @@ public interface IGuideRepository extends JpaRepository<Guide, Long>{
 	@Query("select g from Guide g where g.validated=0")
 	public List<Guide> findUnvalidated();
 	
+	@Query("select g from Guide g where g.validated=1")
+	public List<Guide> findvalidated();
+	
 	@Transactional
 	@Modifying
 	@Query("update Guide set validated=1 where id=:x")

@@ -90,7 +90,12 @@ public class ExperienceController {
 		return experienceService.findUnvalidated();
 	}
 	
-	@PutMapping("/experiences/validate/{idExperience}")
+	@GetMapping("/experiences/validated")
+	public List<Experience> findvalidated(){
+		return experienceService.findvalidated();
+	}
+	
+	@GetMapping("/experiences/validate/{idExperience}")
 	public void validate(@PathVariable("idExperience") Long id) {
 		experienceService.validate(id);
 	}

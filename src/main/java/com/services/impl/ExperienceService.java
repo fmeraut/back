@@ -54,6 +54,11 @@ public class ExperienceService implements IExperienceService{
 	public List<Experience> findUnvalidated() {
 		return experienceRepository.findUnvalidated();
 	}
+	
+	@Override
+	public List<Experience> findvalidated() {
+		return experienceRepository.findvalidated();
+	}
 
 	@Override
 	public void validate(Long id) {

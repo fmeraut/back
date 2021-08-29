@@ -20,6 +20,8 @@ public interface IExperienceService {
 	
 	public List<Experience> findUnvalidated();
 	
+	public List<Experience> findvalidated();
+	
 	public void validate(Long id);
 	
 	public List<Experience> findTop();

@@ -83,7 +83,12 @@ public class GuideController {
 		return guideService.findUnvalidated();
 	}
 	
-	@PutMapping("/guides/validate/{idGuide}")
+	@GetMapping("/guides/validated")
+	public List<Guide> findvalidated(){
+		return guideService.findvalidated();
+	}
+	
+	@GetMapping("/guides/validate/{idGuide}")
 	public void validate(@PathVariable("idGuide") Long id) {
 		guideService.validate(id);
 	}

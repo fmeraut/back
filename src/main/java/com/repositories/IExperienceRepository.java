@@ -34,6 +34,9 @@ public interface IExperienceRepository extends JpaRepository<Experience, Long>{
 	@Query("select e from Experience e where e.validated=0")
 	public List<Experience> findUnvalidated();
 	
+	@Query("select e from Experience e where e.validated=1")
+	public List<Experience> findvalidated();
+	
 	@Transactional
 	@Modifying
 	@Query("update Experience set validated=1 where id=:x")
