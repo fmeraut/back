@@ -16,10 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-
 import com.entities.Guide;
+import com.entities.Place;
 
 import com.services.interfaces.IGuideService;
+import com.services.interfaces.IPlaceService;
 
 @CrossOrigin
 @RestController
@@ -28,6 +29,8 @@ public class GuideController {
 
 	@Autowired
 	IGuideService guideService;
+	@Autowired
+	IPlaceService placeService;
 
 //	@PostMapping("/guides")
 //	public Guide saveGuide(@RequestBody Guide guide) {
@@ -106,5 +109,14 @@ public class GuideController {
 	@GetMapping("/guides/countryList")
 	public List<Guide> findCountryList(){
 		return guideService.findCountryList();
+	}
+	
+	@PutMapping("/guides/asso")
+	public void associatePlace(@RequestBody Guide guide) {
+		Guide currentGuide = guideService.findOne(guide.getId());
+		Place assoPlace = placeService.findOne(guide.getPlaces().get(0).getId());
+		List<Place> places = currentGuide.getPlaces();
+		places.add(assoPlace);
+		currentGuide.setPlaces(places);
 	}
 }
