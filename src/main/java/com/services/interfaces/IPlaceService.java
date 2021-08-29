@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.entities.Place;
 
+
 public interface IPlaceService {
 	public Place savePlace(Place place);
 	
@@ -18,4 +19,10 @@ public interface IPlaceService {
 	public List<Place> findPlaceByTitle(String title);
 	
 	public List<Place> findByGuide(Long id);
+	
+public List<Place> findTop();
+	
+	public List<Place> findTop4();
+	
+	public List<Place> findCountryList();
 }

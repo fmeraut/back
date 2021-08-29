@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.entities.Place;
 import com.entities.Place;
+import com.entities.Place;
 import com.services.interfaces.IGuideService;
 import com.services.interfaces.IPlaceService;
 
@@ -89,4 +90,21 @@ public class PlaceController {
 	public List<Place> findByGuide(@PathVariable("idGuide") Long id){
 		return placeService.findByGuide(id);
 	}
+	
+	
+	@GetMapping("/places/top")
+	public List<Place> findTop() {
+		return placeService.findTop();
+	}
+	
+	@GetMapping("/places/top4")
+	public List<Place> findTop4() {
+		return placeService.findTop4();
+	}
+	
+	@GetMapping("/places/countryList")
+	public List<Place> findCountryList(){
+		return placeService.findCountryList();
+	}
+
 }

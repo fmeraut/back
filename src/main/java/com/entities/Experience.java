@@ -50,7 +50,7 @@ public class Experience implements Serializable{
 	private List<ExpComment> comments;
 	
 	@JsonBackReference
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user",  referencedColumnName = "id")
 	private User user;
 
