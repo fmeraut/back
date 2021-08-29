@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.entities.Place;
 import com.entities.Place;
 import com.services.interfaces.IGuideService;
 import com.services.interfaces.IPlaceService;
@@ -27,11 +30,36 @@ public class PlaceController {
 	@Autowired
 	IGuideService guideService;
 
-	@PostMapping("/places")
-	public Place savePlace(@RequestBody Place place) {
-		return placeService.savePlace(place);
+//	@PostMapping("/places")
+//	public Place savePlace(@RequestBody Place place) {
+//		return placeService.savePlace(place);
+//	}
+	
+	@PostMapping(value="/places")
+	public String savePlace(@RequestParam String title, @RequestParam String country, 
+			@RequestParam String adress, @RequestParam String city, @RequestParam String region, @RequestParam String schedules,  
+			@RequestParam String cost, @RequestParam String description, @RequestParam MultipartFile photos,   
+			@RequestParam String rating){ 
+		try {
+			Place place=new Place();
+			place.setTitle(title);
+			place.setCountry(country);
+			place.setAdress(adress);
+			place.setCity(city);
+			place.setRegion(region);
+			place.setSchedules(schedules);
+			place.setDescription(description);
+			place.setCost(cost);
+			place.setPhotos(photos.getBytes());
+			place.setRating(Double.parseDouble(rating));
+			placeService.savePlace(place);
+			return "File uploaded successfully!";
+		} catch (Exception ex){
+			ex.printStackTrace();
+			return "Fail!";
+		}
 	}
-
+	
 	@GetMapping("/places")
 	public List<Place> findAll() {
 		return placeService.findAll();
