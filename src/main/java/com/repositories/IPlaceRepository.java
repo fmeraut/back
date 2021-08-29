@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.entities.Place;
+import com.entities.Place;
 
 @Repository
 public interface IPlaceRepository extends JpaRepository<Place, Long>{
@@ -34,5 +35,11 @@ public interface IPlaceRepository extends JpaRepository<Place, Long>{
 	 */
 	@Query("from Place p inner join p.guides g where g.id= :x")
 	public List<Place> findByGuide(@Param("x") Long id);
+	
+	@Query("from Place e order by e.rating desc")
+	public List<Place> findTop();
+	
+	@Query("from Place e order by e.country asc")
+	public List<Place> findCountryList();
 
 }

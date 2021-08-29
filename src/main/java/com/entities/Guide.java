@@ -3,6 +3,7 @@ package com.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,8 +13,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,6 +28,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
+@JsonIgnoreProperties
 public class Guide implements Serializable {
 	/**
 	 * 
@@ -43,13 +47,17 @@ public class Guide implements Serializable {
 	private boolean validated;
 	private double rating;
 	
-	@JsonBackReference
+	@JsonBackReference(value="user-guide")
 	@ManyToMany
 	@JoinTable(name = "assoc_user_guide", joinColumns = @JoinColumn(name = "id_guide"), inverseJoinColumns = @JoinColumn(name = "id_user"))
 	private List<User> users;
 	
-	@JsonBackReference
+	@JsonBackReference(value="lieu-guide")
 	@ManyToMany(mappedBy = "guides")
 	private List<Place> places;
+	
+	
+	@OneToMany(mappedBy = "guide",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<GuideComment> comments;
 
 }// end class
