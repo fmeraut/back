@@ -37,7 +37,7 @@ public class ExpComment implements Serializable{
 	private Date date;
 	
 
-	@JsonBackReference
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "experience", referencedColumnName = "id")
 	private Experience experience;

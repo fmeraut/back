@@ -37,8 +37,8 @@ public class PlaceComment implements Serializable{
 	private double note;
 	private Date date;
 	
-	@JsonBackReference
-	@ManyToOne
+
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_id_place",referencedColumnName = "id")
 	private Place place;
 	

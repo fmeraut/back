@@ -38,8 +38,8 @@ public class CompanyComments implements Serializable{
 	private double note;
 	private Date date;
 	
-	@JsonBackReference
-	@ManyToOne(fetch = FetchType.LAZY)
+	
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "company",  referencedColumnName = "id")
 	private Company company;
 	

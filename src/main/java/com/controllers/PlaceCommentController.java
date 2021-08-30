@@ -30,7 +30,10 @@ public class PlaceCommentController {
 
 	@PostMapping("/placeComments")
 	public PlaceComment savePlaceComment(@RequestBody PlaceComment placeComment) {
+		System.out.println("Je suis la methode save");
+		System.out.println("id du place est:"+placeComment.getPlace().getId());
 		Place place = placeService.findOne(placeComment.getPlace().getId());
+		System.out.println("l'id est :"+place.getId());
 		placeComment.setPlace(place);
 		return placeCommentService.savePlaceComment(placeComment);
 	}

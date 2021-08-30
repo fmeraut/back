@@ -16,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
@@ -45,7 +46,8 @@ public class User implements Serializable{
 	private boolean aboNews;
 	private boolean enabled=true;
 	
-	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<Experience> experiences;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
@@ -53,6 +55,7 @@ public class User implements Serializable{
 	private Set<Role> roles;
 	
 	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<CompanyComments> compcomments;
 
 }

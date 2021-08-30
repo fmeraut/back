@@ -36,8 +36,8 @@ public class GuideComment implements Serializable{
 	private double rating;
 	private Date date;
 	
-	@JsonBackReference
-	@ManyToOne(fetch = FetchType.LAZY)
+
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "guide", referencedColumnName = "id")
 	private Guide guide;
 

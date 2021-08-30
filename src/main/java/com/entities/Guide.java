@@ -16,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -46,9 +47,8 @@ public class Guide implements Serializable {
 	private byte[] images;
 	private boolean validated;
 	private double rating;
-	
-	@JsonBackReference(value="user-guide")
-	@ManyToMany
+
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "assoc_user_guide", joinColumns = @JoinColumn(name = "id_guide"), inverseJoinColumns = @JoinColumn(name = "id_user"))
 	private List<User> users;
 	
@@ -57,7 +57,8 @@ public class Guide implements Serializable {
 	private List<Place> places;
 	
 	
-	@OneToMany(mappedBy = "guide",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "guide",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<GuideComment> comments;
 
 }// end class
