@@ -1,5 +1,6 @@
 package com.services.impl;
 
+import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -41,7 +42,7 @@ public class MailService {
 		transport.close();
 	}
 
-	public MimeMessage draftMail(String[] rec, String sub, String txt) throws AddressException, MessagingException {
+	public MimeMessage draftMail(List<String> rec, String sub, String txt) throws AddressException, MessagingException {
 
 		// creation du message
 		MimeMessage mimeMessage = new MimeMessage(newSession);
@@ -88,7 +89,7 @@ public class MailService {
 		return newSession;
 	}
 	
-	public void mail(String[] rec, String sub, String txt) {
+	public void mail(List<String> rec, String sub, String txt) {
 		newSession=this.setupServerProperties();
 		
 		try {
