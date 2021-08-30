@@ -120,10 +120,10 @@ public class GuideController {
 		currentGuide.setPlaces(places);
 	}
 	
-	@GetMapping("/guides/guide/{gid}/place/{pid}")
-	public void savePlace(@PathVariable("gid") Long gid, @PathVariable("pid") Long pid){ 
+	@PostMapping("/guides/place")
+	public void savePlace(@RequestParam String gid, @RequestParam String pid){ 
 		
-		guideService.savePlace(gid,pid);
+		guideService.savePlace(Long.parseLong(gid),Long.parseLong(pid));
 			
 	}
 }
