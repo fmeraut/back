@@ -40,7 +40,7 @@ public interface IGuideRepository extends JpaRepository<Guide, Long>{
 	@Query("update Guide set validated=1 where id=:x")
 	public void validate(@Param("x") Long id);
 	
-	@Query("from Guide g order by g.rating desc")
+	@Query("from Guide g where g.validated=1 order by g.rating desc")
 	public List<Guide> findTop();
 	
 	@Query("from Guide g order by g.country asc")

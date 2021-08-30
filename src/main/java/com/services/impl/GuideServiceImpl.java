@@ -112,7 +112,6 @@ public class GuideServiceImpl implements IGuideService{
 		places.add(place);
 		guide.setPlaces(places);
 		place.setGuides(guides);
-		placeRepository.save(place);
 		return guideRepository.save(guide);
 		
 	}
